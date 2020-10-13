@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML</title>
+  <style>
+    .box{
+      border: 2px solid green;
+      width: 400px;
+      padding: 20px;
+      position: relative;
+    }
+    .cover {
+    background-color: rgba(0, 140, 255, 0.938);
+    width: 440px;
+    height: 244px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color:white;
+    display: none;
+  }
+.cover h1,h2{
+  text-align: center;
+}
+    input{
+      width:200px;
+      margin: auto;
+      border: none;
+      border-bottom: 2px solid gray;
+      outline: none;
+      font-size: 20px;
+      text-align: center;
+      display: block;
+    }
+ #generate{
+   text-transform: uppercase;
+   text-align: center;
+   display: block;
+   margin: auto;
+   margin-top:25px ;
+   padding: 10px;
+ }
+ #generate:hover{
+   color: cornflowerblue;
+   box-shadow: 0px 0px 5px 0px black;
+ }
+ .show{
+   display: block;
+ }
+ .res{
+   color: red;
+   text-shadow: 0px 0px 10px white;
+ }
+  </style>
+</head>
+
+<body>
+  <div class="box"> 
+  <h2>HSC RESULT CALCULATOR</h2>
+  <input type="text" name="" id="jscresult" placeholder="JSC GPA" onfocus="foucesfunctioon(this)" onblur="blurfunction(this)"><br>
+  <input type="text" name="" id="sscresult" placeholder="SSC GPA" onfocus="foucesfunctioon(this)" onblur="blurfunction(this)">
+  <button id="generate" onclick="generate()">generate</button>
+  <div class="cover">
+    <h1 class="congras">Congratulation</h1>
+    <h2>Your HSC GPA</h2>
+    <h1 class="res">5.00</h1>
+  </div>
+</div>
+
+  <script>
+    
+    function foucesfunctioon(element) {
+      element.style.borderBottom="2px dashed  red";
+    }
+    function blurfunction(element){
+      element.style.borderBottom="";
+    }
+    function generate(){
+      document.querySelector(".cover").classList.add("show");
+
+      var jsc=Number(document.querySelector("#jscresult").value);
+      var ssc=Number(document.querySelector("#sscresult").value);
+
+  if(jsc<=5 && jsc >=0 && ssc<=5 && ssc >=0){
+    document.querySelector(".res").innerText= (jsc+ssc)/2;
+    document.querySelector(".congras").innerText="Congratulation";
+    document.querySelector(".cover h2").innerText="Your HSC GPA";
+  }else{
+    document.querySelector(".res").innerText="INTER VAlID GPA";
+    document.querySelector(".congras").innerText="WORNG";
+    document.querySelector(".cover h2").innerText="";
+  };
+     
+
+
+
+    }
+    document.querySelector(".cover").addEventListener("mouseleave",function () {
+      document.querySelector(".cover").classList.remove("show");
+    });
+
+
+
+  </script>
+</body>
+</html>
